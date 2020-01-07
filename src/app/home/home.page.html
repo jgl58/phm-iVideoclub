@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Inicio
     </ion-title>
@@ -8,6 +8,32 @@
 
 <ion-content>
   <div class="ion-padding">
-    <h1>Contenido de ejemplo</h1>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Bienvenido a</ion-card-subtitle>
+        <ion-card-title>iVideoclub!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        iVideoclub es una aplicación desarrollada con Ionic.
+        Para acceder a la gestión del videoclub pulsa el siguiente botón:
+      </ion-card-content>
+      <ion-item [routerLink]="['/videoclub']">
+        <ion-icon name="videocam" slot="start"></ion-icon>
+        <ion-label>Acceso a iVideoclub</ion-label>
+      </ion-item>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Información sobre el autor</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Aplicación desarrollada por Jonay Gilabert López
+      </ion-card-content>
+      <ion-item [routerLink]="['/autor']">
+        <ion-icon name="person" slot="start"></ion-icon>
+        <ion-label>Consultar información</ion-label>
+      </ion-item>
+    </ion-card>
   </div>
 </ion-content>

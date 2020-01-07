@@ -1,11 +1,19 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
     <ion-title>Currículum</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <h1>Contenido de ejemplo</h1>
-  </div>
-</ion-content>
+  <ion-list *ngIf="listaTrabajos">
+    <ion-item *ngFor="let trabajo of listaTrabajos">
+      <ion-label class="ion-text-wrap">
+        <b>{{trabajo.fecha}}</b><br/>
+        {{trabajo.desc}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content> 

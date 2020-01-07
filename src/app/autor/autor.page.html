@@ -1,11 +1,38 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
     <ion-title>Autor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    <h1>Contenido de ejemplo</h1>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Información</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Aplicación desarrollada por Jonay Gilabert López. A continuación puede consultar más información
+        sobre el autor:
+      </ion-card-content>
+      <ion-item [routerLink]="['/curriculum']" routerDirection="root">
+        <ion-icon name="book" slot="start"></ion-icon>
+        <ion-label>Currículum vítae</ion-label>
+      </ion-item>
+      <ion-item href="mailto:jgl58@alu.ua.es">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label><b>Correo:</b> {{autor.email}}</ion-label>
+      </ion-item>
+      <ion-item href="autor.twitter">
+        <ion-icon name="logo-twitter" slot="start"></ion-icon>
+        <ion-label><b>Twitter:</b> Jonay_GL</ion-label>
+      </ion-item>
+      <ion-item href="tel:777777777">
+        <ion-icon name="call" slot="start"></ion-icon> 
+        <ion-label><b>Teléfono:</b>{{autor.phone}}</ion-label>
+      </ion-item>
+    </ion-card>
   </div>
 </ion-content>

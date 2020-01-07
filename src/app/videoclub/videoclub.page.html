@@ -1,11 +1,23 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
     <ion-title>iVideoclub</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <h1>Contenido de ejemplo</h1>
-  </div>
+    <ion-list *ngIf="listaPeliculas">
+      <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
+        <ion-thumbnail slot="start">
+          <img src="{{pelicula.poster}}">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{pelicula.title}}</h2>
+        <p><b>Director:</b> {{pelicula.director}} <br/>
+          <b>Año:</b> {{pelicula.year}}</p>
+          </ion-label>
+      </ion-item>
+  </ion-list>
 </ion-content>
