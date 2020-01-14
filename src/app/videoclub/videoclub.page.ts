@@ -8,15 +8,26 @@ import { PeliculasService } from '../services/peliculas.service';
 })
 export class VideoclubPage implements OnInit, OnDestroy {
 
+  modoLista: Boolean
   listaPeliculas: any[]
 
   constructor(private router: Router, private service: PeliculasService) { 
     this.listaPeliculas = service.getPeliculas()
+    this.modoLista = true;
   }
 
   verPaginaDetalle(id): void {
     this.router.navigate(['/detalle', id]);
   }
+
+  cambiarVista(){
+    if(this.modoLista == true){
+      this.modoLista = false;
+    }else{
+      this.modoLista = true;
+    }
+  }
+
 
   ngOnInit() {
     console.log('VideoclubPage ngOnInit');
@@ -38,5 +49,6 @@ export class VideoclubPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     console.log('VideoclubPage ngOnDestroy');
   }
+
 
 }

@@ -1,5 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="modoLista == true; else cuadricula" (click)="cambiarVista()">
+        <ion-icon slot="icon-only" name="md-apps"></ion-icon>
+      </ion-button>
+      <ng-template #cuadricula>
+        <ion-button (click)="cambiarVista()">
+          <ion-icon slot="icon-only" name="md-reorder"></ion-icon>
+        </ion-button>
+      </ng-template>
+      </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
@@ -8,7 +18,9 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="listaPeliculas">
+
+  <div *ngIf="listaPeliculas; else emptyList">
+    <ion-list *ngIf="modoLista == true; else modoGrid">
       <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
         <ion-thumbnail slot="start">
           <img src="{{pelicula.poster}}">
@@ -20,4 +32,31 @@
           </ion-label>
       </ion-item>
   </ion-list>
+  <ng-template #modoGrid>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)"
+         detail size-xs="6" size-sm="4" size-md="3">
+         <ion-card>
+          <img src="{{pelicula.poster}}" />
+          <ion-card-header>
+            <ion-card-title>{{pelicula.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              <b>Director:</b> {{pelicula.director}} <br />
+              <b>Año:</b> {{pelicula.year}} <br />
+            </p>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
+</div>
+<ng-template #emptyList>
+  <div class="ion-text-center">
+    <h3>La lista está vacia</h3>
+  </div>
+</ng-template>
 </ion-content>
