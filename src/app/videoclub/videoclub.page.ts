@@ -1,6 +1,6 @@
+import { PeliculasAPIService } from './../services/peliculas-api.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { PeliculasService } from '../services/peliculas.service';
 @Component({
   selector: 'app-videoclub',
   templateUrl: './videoclub.page.html',
@@ -11,9 +11,17 @@ export class VideoclubPage implements OnInit, OnDestroy {
   modoLista: Boolean
   listaPeliculas: any[]
 
-  constructor(private router: Router, private service: PeliculasService) { 
-    this.listaPeliculas = service.getPeliculas()
+  constructor(private router: Router, private peliculasAPIService: PeliculasAPIService) { 
     this.modoLista = true;
+    peliculasAPIService.getPeliculas().subscribe(
+      result => {
+        this.listaPeliculas = result;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    
   }
 
   verPaginaDetalle(id): void {

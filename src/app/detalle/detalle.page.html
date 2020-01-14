@@ -3,21 +3,21 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{pelicula.title}}</ion-title>
+    <ion-title>{{pelicula?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <img src="{{pelicula.poster}}" />
+    <img src="{{pelicula?.poster}}" />
     <ion-card-header>
-      <ion-card-title>{{pelicula.title}}</ion-card-title>
+      <ion-card-title>{{pelicula?.title}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>
-        <b>Director:</b> {{pelicula.director}} <br />
-        <b>Año:</b> {{pelicula.year}} <br />
-        <b>Sinopsis: </b> {{pelicula.synopsis}}
+        <b>Director:</b> {{pelicula?.director}} <br />
+        <b>Año:</b> {{pelicula?.year}} <br />
+        <b>Sinopsis: </b> {{pelicula?.synopsis}}
       </p>
     </ion-card-content>
   </ion-card>
